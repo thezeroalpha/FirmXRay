@@ -35,7 +35,7 @@ make run PATH=examples/Nordic/example_nordic.bin MCU=Nordic
 ```
 
 
-## Running Example 
+## Running Example
 
 **example_nordic.bin** is a Nordic-based firmware compiled from [main.c](https://github.com/OSUSecLab/FirmXRay/blob/master/examples/Nordic/main.c).
 The firmware code invokes several SDK APIs to configure the BLE pairing feature, services, characteristics, and so on.
@@ -98,7 +98,7 @@ After running FirmXRay on the above example, you can get the following results s
 }
 ```
 The result shows the basic information about the firmware (base address, size, time), and also the resolved function parameter values for each SDK function.
-The design of FirmXRay is detailed in our paper. There is also a real-world example of a BLE thermometer firmware 
+The design of FirmXRay is detailed in our paper. There is also a real-world example of a BLE thermometer firmware
 **BLE_Ear_s130.bin** for you to try.
 
 There is another running example for TI, and you can try it with
