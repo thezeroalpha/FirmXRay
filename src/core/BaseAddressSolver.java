@@ -117,51 +117,51 @@ public class BaseAddressSolver {
 
 
         // Constraint 3: absolute string pointer
-        Map<Address, String> strs = StringUtil.getString(program);
-        Set<Address> straddrs = strs.keySet();
-        List<Long> relativeAddrSet = FunctionUtil.findAllRelativeInADR(program);
-        for (Address add: straddrs) {
-            if (relativeAddrSet.contains(add.getUnsignedOffset())) // get rid of relative string pointer
-                continue;
-            for (long ab: AbsAddrSet) {
-                // add + candidate = ab
-                long candidate = ab - add.getUnsignedOffset();
-
-                if (candidate < 0 || candidate > Constant.MAX_BASE)
-                    continue;
-
-                addScore(scores, candidate);
-            }
-        }
+        // Map<Address, String> strs = StringUtil.getString(program);
+        // Set<Address> straddrs = strs.keySet();
+        // List<Long> relativeAddrSet = FunctionUtil.findAllRelativeInADR(program);
+        // for (Address add: straddrs) {
+        //     if (relativeAddrSet.contains(add.getUnsignedOffset())) // get rid of relative string pointer
+        //         continue;
+        //     for (long ab: AbsAddrSet) {
+        //         // add + candidate = ab
+        //         long candidate = ab - add.getUnsignedOffset();
+        //
+        //         if (candidate < 0 || candidate > Constant.MAX_BASE)
+        //             continue;
+        //
+        //         addScore(scores, candidate);
+        //     }
+        // }
 
 
         // Constraint 4: vector table
-        Map<Address, Long> vec = new HashMap<>();
-        if (Constant.MCU.equals("Nordic")) {
-            vec = StringUtil.getVector(program);
-            List<Long> e7 = BaseAddressUtil.getE7Address(program);
-
-            for (long v : vec.values()) {
-                for (long e : e7) {
-                    // e + candidate = v
-                    long candidate = v - e;
-
-                    if (candidate < 0 || candidate > Constant.MAX_BASE)
-                        continue;
-
-                    addScore(scores, candidate);
-                }
-            }
-        }
-
+        // Map<Address, Long> vec = new HashMap<>();
+        // if (Constant.MCU.equals("Nordic")) {
+        //     vec = StringUtil.getVector(program);
+        //     List<Long> e7 = BaseAddressUtil.getE7Address(program);
+        //
+        //     for (long v : vec.values()) {
+        //         for (long e : e7) {
+        //             // e + candidate = v
+        //             long candidate = v - e;
+        //
+        //             if (candidate < 0 || candidate > Constant.MAX_BASE)
+        //                 continue;
+        //
+        //             addScore(scores, candidate);
+        //         }
+        //     }
+        // }
+        //
 
         scores = NumUtil.sortByValues(scores, true);
 
 
         int numAbsAddr = AbsAddrSet.size();
         int numPrologue = entry.size();
-        int numAbsStr = straddrs.size();
-        int numVec = vec.size();
+        // int numAbsStr = straddrs.size();
+        // int numVec = vec.size();
         int score = 0;
         long base = 0;
         long lower = 0;

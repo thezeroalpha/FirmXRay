@@ -115,6 +115,7 @@ public class Main {
         }
 
 
+        /*
         Address add = program.getImageBase();
         try {
             program.setImageBase(add.getNewAddress(base), false);
@@ -155,6 +156,7 @@ public class Main {
         // Close project without saving
         ghidraProject.setDeleteOnClose(true);
         ghidraProject.close();
+        */
 
     }
 
